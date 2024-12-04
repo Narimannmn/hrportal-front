@@ -1,0 +1,22 @@
+.container {
+  padding: 96px 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+}
+.heading {
+  font-size: 3.75rem;
+  line-height: 4.5rem;
+  font-weight: 600;
+}
+.textContainer {
+  width: 35rem;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  padding-right: 2rem;
+}
+.error {
+  color: #e1056d;
+}
