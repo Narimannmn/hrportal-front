@@ -11,8 +11,8 @@ type Props = {
   searchParams: SearchParams;
 };
 type SearchParams = {
-  group: string | null;
-  city: string;
+  group?: string;
+  city?: string;
 };
 const getJobGroups = async (): Promise<JobGroup[]> => {
   const response = await api.get('api/jobGroups');
@@ -40,7 +40,7 @@ export default async function Page({ searchParams }: Props) {
         </div>
         <JobFilter jobGroups={jobGroups} />
         {filteredJobGroups?.map((group) => {
-          return <VacancyGroup key={group.id} jobGroup={group} />;
+          return <VacancyGroup key={group.id} jobGroup={group} location={query.city} />;
         })}
       </div>
       <VacancyApplicationForm />

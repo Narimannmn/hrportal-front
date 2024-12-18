@@ -6,6 +6,7 @@ import { VacancyCard } from '../VacancyCard/VacancyCard';
 
 export interface VacancyGroupProps {
   jobGroup: JobGroup;
+  location?: string;
 }
 
 const getJobByGroup = async (jobGroupId: number): Promise<Job[]> => {
@@ -13,8 +14,9 @@ const getJobByGroup = async (jobGroupId: number): Promise<Job[]> => {
   return response.data;
 };
 
-export const VacancyGroup = async ({ jobGroup }: VacancyGroupProps) => {
+export const VacancyGroup = async ({ jobGroup, location }: VacancyGroupProps) => {
   const jobs = await getJobByGroup(jobGroup.id);
+  const filteredJobs = location ? jobs.filter((job) => job.location == location) : jobs;
   if (jobs.length == 0) return;
   return (
     <div className='flex flex-col gap-16'>
@@ -23,10 +25,10 @@ export const VacancyGroup = async ({ jobGroup }: VacancyGroupProps) => {
         <h3 className='text-lg'>{jobGroup.description}</h3>
       </div>
       <div className='flex flex-col gap-6'>
-        {jobs && jobs.length === 0 ? (
-          <p>No jobs available for this group.</p>
+        {filteredJobs && filteredJobs.length === 0 ? (
+          <p>Нет вакансии по данному отделу.</p>
         ) : (
-          jobs?.map((job) => <VacancyCard vacancy={job} key={job.id} />)
+          filteredJobs?.map((job) => <VacancyCard vacancy={job} key={job.id} />)
         )}
       </div>
     </div>

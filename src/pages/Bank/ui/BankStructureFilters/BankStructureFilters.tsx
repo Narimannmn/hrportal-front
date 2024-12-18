@@ -16,7 +16,7 @@ export const BankStructureFilters = ({
   setSearchInput,
   setSelectedDep,
   departaments,
-  selectedDep
+  selectedDep,
 }: BankStructureFiltersProps) => {
   const treeData: TreeDataItem[] = useMemo(() => {
     return departaments.map((dep) => ({

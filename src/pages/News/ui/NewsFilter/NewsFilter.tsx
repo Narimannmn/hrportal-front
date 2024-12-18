@@ -12,12 +12,12 @@ export interface NewsFilterProps {
 export const NewsFilter = ({ jobGroups, type }: NewsFilterProps) => {
   const handleGroupChange = (value: string) => {
     const newQueryString = createQueryString(`${type}[group]`, value);
-    router.push(pathname + '?' + newQueryString);
+    router.push(pathname + '?' + newQueryString, { scroll: false });
   };
 
   const handleSort = (value: string) => {
     const newQueryString = createQueryString(`${type}[sort]`, value);
-    router.push(pathname + '?' + newQueryString);
+    router.push(pathname + '?' + newQueryString, { scroll: false });
   };
 
   const router = useRouter();
