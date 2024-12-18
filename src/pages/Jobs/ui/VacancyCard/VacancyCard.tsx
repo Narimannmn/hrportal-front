@@ -21,9 +21,10 @@ export const VacancyCard = async ({ vacancy }: VacancyCardProps) => {
             <div className='flex gap-2'>
               <h2 className='text-lg font-medium'>{vacancy.jobTitle}</h2>
               <Badge
-                className={`${
-                  vacancy.jobGroup?.groupTagColor ?? 'bg-orange-400'
-                } text-xs rounded-xl px-2 py-1 ml-2`}
+                className={`text-xs rounded-xl px-2 py-1 ml-2`}
+                style={{
+                  backgroundColor: vacancy.jobGroup.groupTagColor || '#390027',
+                }}
                 role='status'
                 aria-label='Job Category'
               >
